@@ -13,11 +13,9 @@ Der Skill formuliert Prompts für **OpenText Content Aviator (Olli AI)** um — 
 In einer laufenden Claude Code Session:
 
 ```
-/plugin marketplace add jwienand/aviator-prompt-optimizer-marketplace
+/plugin marketplace add janwienand/aviator-prompt-optimizer-marketplace
 /plugin install aviator-prompt-optimizer@aviator-prompt-optimizer-marketplace
 ```
-
-> Passe `jwienand/...` an den tatsächlichen GitHub-Pfad an, falls das Repo unter einem anderen Namen / Account liegt.
 
 Alternativ lokal (z. B. zum Testen vor dem Push):
 
