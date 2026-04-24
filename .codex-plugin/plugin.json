@@ -1,0 +1,25 @@
+{
+  "name": "aviator-prompt-optimizer",
+  "version": "1.1.0",
+  "description": "Rewrites and optimizes prompts for OpenText Content Aviator (Olli AI) — transforms casual or ChatGPT-style prompts into prompts optimized for Aviator's Agentic RAG pipeline (semantic search + LLM).",
+  "author": {
+    "name": "Jan Wienand"
+  },
+  "repository": "https://github.com/janwienand/aviator-prompt-optimizer-marketplace",
+  "license": "MIT",
+  "keywords": ["aviator", "olli", "opentext", "prompt", "rag", "optimizer"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Aviator Prompt Optimizer",
+    "shortDescription": "Optimize prompts for OpenText Content Aviator (Olli AI).",
+    "longDescription": "Teaches the AI agent how to rewrite prompts so they work well with OpenText Content Aviator's Agentic RAG pipeline — which combines semantic search (PG Vector) with an LLM. Unlike ChatGPT, an Aviator prompt has to serve both the retrieval step (keywords) and the generation step (tone, persona, format).",
+    "developerName": "Jan Wienand",
+    "category": "Productivity",
+    "capabilities": ["Read"],
+    "defaultPrompt": [
+      "Optimize this prompt for Aviator: ...",
+      "Rewrite this for OpenText Content Aviator / Olli AI",
+      "Make this RAG prompt work better in Aviator"
+    ]
+  }
+}

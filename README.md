@@ -1,71 +1,112 @@
-# Aviator Prompt Optimizer — Claude Code Marketplace
+# Aviator Prompt Optimizer
 
-Ein öffentlicher [Claude Code](https://docs.claude.com/en/docs/claude-code/overview) Plugin-Marketplace, der den **Aviator Prompt Optimizer** Skill bereitstellt.
+An AI agent skill that teaches Claude, Codex, Gemini and other AI agents how to rewrite prompts for **[OpenText Content Aviator](https://www.opentext.com/products/content-aviator) (Olli AI)** — transforming casual or ChatGPT-style prompts into prompts optimized for Aviator's Agentic RAG pipeline (semantic search + LLM).
 
-Der Skill formuliert Prompts für **OpenText Content Aviator (Olli AI)** um — er verwandelt lockere oder ChatGPT-artige Prompts in Prompts, die für Aviators Agentic-RAG-Pipeline (semantische Suche + LLM) optimiert sind.
+## Skill
 
-## Voraussetzungen
+| Skill | Description |
+|-------|-------------|
+| **aviator-prompt-optimizer** | Rewrites prompts so they serve both semantic retrieval (keywords) and the LLM (tone, persona, format) |
 
-- [Claude Code](https://docs.claude.com/en/docs/claude-code/overview) installiert (`npm install -g @anthropic-ai/claude-code` oder via IDE)
+## Prerequisites
+
+- An AI assistant that supports Agent Skills (Claude Code, Claude.ai web, GitHub Copilot, OpenAI Codex, Gemini CLI, etc.)
+- Access to OpenText Content Aviator (to actually use the optimized prompts)
 
 ## Installation
 
-In einer laufenden Claude Code Session:
+### Claude Code
+
+Add the marketplace from GitHub, then install the plugin:
+
+```bash
+claude plugin marketplace add janwienand/aviator-prompt-optimizer-marketplace
+claude plugin install aviator-prompt-optimizer@aviator
+```
+
+Equivalent inside a running Claude Code session:
 
 ```
 /plugin marketplace add janwienand/aviator-prompt-optimizer-marketplace
-/plugin install aviator-prompt-optimizer@aviator-prompt-optimizer-marketplace
+/plugin install aviator-prompt-optimizer@aviator
 ```
 
-Alternativ lokal (z. B. zum Testen vor dem Push):
+### Claude.ai (Web / Desktop App)
 
-```
-/plugin marketplace add /pfad/zu/aviator-prompt-optimizer-marketplace
-/plugin install aviator-prompt-optimizer@aviator-prompt-optimizer-marketplace
-```
+Custom Skills are available on **Pro, Max, Team, and Enterprise** plans with code execution enabled.
 
-## Nutzung
+1. Download the skill ZIP from the latest [GitHub release](https://github.com/janwienand/aviator-prompt-optimizer-marketplace/releases/latest) (`aviator-prompt-optimizer.zip`).
+2. In [claude.ai](https://claude.ai), open **Settings → Capabilities → Skills** (also reachable via **Customize → Skills**).
+3. Click **+ → Create skill → Upload a skill**.
+4. Select `aviator-prompt-optimizer.zip`.
 
-Nach der Installation wird der Skill automatisch aktiviert, sobald du Claude Code bittest, einen Prompt für Aviator / Olli zu optimieren. Beispiele:
+> The ZIP must contain the skill folder at its root, with `SKILL.md` inside. The provided release ZIP is already packaged correctly.
 
-- „Optimiere diesen Prompt für Aviator: …"
-- „Mach diesen Prompt Olli-tauglich."
-- „Schreib diesen RAG-Prompt für Content Aviator um."
+Prefer to build the ZIP yourself?
 
-Der Skill führt dich durch Persona, Kontext, Aufgabe und Output-Format und gibt einen strukturierten, Aviator-optimierten Prompt zurück.
-
-## Updates
-
-```
-/plugin marketplace update aviator-prompt-optimizer-marketplace
-/plugin install aviator-prompt-optimizer@aviator-prompt-optimizer-marketplace
+```bash
+git clone https://github.com/janwienand/aviator-prompt-optimizer-marketplace
+cd aviator-prompt-optimizer-marketplace/skills
+zip -r ../aviator-prompt-optimizer.zip aviator-prompt-optimizer
 ```
 
-## Deinstallation
+### OpenAI Codex
 
-```
-/plugin uninstall aviator-prompt-optimizer@aviator-prompt-optimizer-marketplace
-/plugin marketplace remove aviator-prompt-optimizer-marketplace
-```
+This repository includes a marketplace catalog at `.agents/plugins/marketplace.json`. When the repo is your current workspace, Codex discovers it automatically as a repo-scoped marketplace. Open the plugin directory, select **Aviator Prompt Optimizer**, and install **aviator-prompt-optimizer**.
 
-## Aufbau
+To make the plugin available across all workspaces, add an entry to your personal marketplace at `~/.agents/plugins/marketplace.json` (create the file if it doesn't exist), replacing `<path>` with the absolute path to this directory:
 
-```
-aviator-prompt-optimizer-marketplace/
-├── .claude-plugin/
-│   └── marketplace.json          # Marketplace-Katalog
-├── plugins/
-│   └── aviator-prompt-optimizer/
-│       ├── .claude-plugin/
-│       │   └── plugin.json       # Plugin-Metadaten
-│       └── skills/
-│           └── aviator-prompt-optimizer/
-│               ├── SKILL.md
-│               └── references/
-│                   └── prompt-templates.md
-└── README.md
+```json
+{
+  "name": "aviator",
+  "interface": { "displayName": "Aviator Prompt Optimizer" },
+  "plugins": [
+    {
+      "name": "aviator-prompt-optimizer",
+      "source": { "source": "local", "path": "<path>" },
+      "policy": { "installation": "AVAILABLE", "authentication": "ON_INSTALL" },
+      "category": "Productivity"
+    }
+  ]
+}
 ```
 
-## Lizenz / Kontakt
+Then restart Codex.
 
-Maintained by Jan Wienand (OpenText). Feedback & Issues gerne via GitHub.
+### Gemini CLI
+
+Install directly from the GitHub repository:
+
+```bash
+gemini extensions install https://github.com/janwienand/aviator-prompt-optimizer-marketplace
+```
+
+Gemini CLI auto-discovers the skill and activates it when relevant.
+
+### GitHub Copilot
+
+Copy the `skills/aviator-prompt-optimizer/` folder into your Copilot skills directory (`<user>/.copilot/skills/`).
+
+### Other AI assistants
+
+Any assistant that supports the [Agent Skills](https://agentskills.io) standard can load skills from this repo. Point your assistant's skill path at the `skills/` subdirectory.
+
+## Usage
+
+Once installed, the skill activates automatically when you ask to optimize a prompt for Aviator / Olli. Example triggers:
+
+- "Optimize this prompt for Aviator: …"
+- "Mach diesen Prompt Olli-tauglich."
+- "Rewrite this RAG prompt for Content Aviator."
+
+The skill walks through persona, context, task, and output format, then returns a structured, Aviator-ready prompt.
+
+## Resources
+
+- [OpenText Content Aviator](https://www.opentext.com/products/content-aviator)
+- [Anthropic — Agent Skills](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview)
+- [Claude.ai — Use Skills](https://support.claude.com/en/articles/12512180-use-skills-in-claude)
+
+## License
+
+MIT

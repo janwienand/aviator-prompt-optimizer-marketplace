@@ -1,0 +1,12 @@
+{
+  "name": "aviator",
+  "interface": { "displayName": "Aviator Prompt Optimizer" },
+  "plugins": [
+    {
+      "name": "aviator-prompt-optimizer",
+      "source": { "source": "local", "path": "./" },
+      "policy": { "installation": "AVAILABLE", "authentication": "ON_INSTALL" },
+      "category": "Productivity"
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "name": "aviator-prompt-optimizer",
+  "version": "1.1.0",
+  "description": "Rewrites and optimizes prompts for OpenText Content Aviator (Olli AI). Use for crafting prompts that work with Aviator's Agentic RAG pipeline (semantic search + LLM)."
+}
