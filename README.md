@@ -96,7 +96,7 @@ Any assistant that supports the [Agent Skills](https://agentskills.io) standard 
 Once installed, the skill activates automatically when you ask to optimize a prompt for Aviator / Olli. Example triggers:
 
 - "Optimize this prompt for Aviator: …"
-- "Mach diesen Prompt Olli-tauglich."
+- "Make this prompt work in Olli."
 - "Rewrite this RAG prompt for Content Aviator."
 
 The skill walks through persona, context, task, and output format, then returns a structured, Aviator-ready prompt.
