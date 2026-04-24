@@ -1,0 +1,9 @@
+{
+  "name": "aviator-prompt-optimizer",
+  "version": "1.1.0",
+  "description": "Rewrites and optimizes prompts for OpenText Content Aviator (Olli AI) — transforms casual or ChatGPT-style prompts into prompts optimized for Aviator's Agentic RAG pipeline (semantic search + LLM)",
+  "author": {
+    "name": "Jan Wienand"
+  },
+  "skills": ["./skills/"]
+}

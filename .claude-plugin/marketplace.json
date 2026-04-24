@@ -1,0 +1,18 @@
+{
+  "name": "aviator-prompt-optimizer-marketplace",
+  "owner": {
+    "name": "Jan Wienand"
+  },
+  "metadata": {
+    "description": "Public Claude Code marketplace for the Aviator Prompt Optimizer skill"
+  },
+  "plugins": [
+    {
+      "name": "aviator-prompt-optimizer",
+      "source": "./plugins/aviator-prompt-optimizer",
+      "description": "Rewrites and optimizes prompts for OpenText Content Aviator (Olli AI) — transforms casual or ChatGPT-style prompts into prompts optimized for Aviator's Agentic RAG pipeline (semantic search + LLM)",
+      "version": "1.1.0",
+      "keywords": ["aviator", "olli", "opentext", "prompt", "rag", "optimizer"]
+    }
+  ]
+}
